@@ -1,0 +1,217 @@
+   /* استدعاء للخط من مكنبه جوجل */
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+
+   /* خلفية متدرجة بخطوط لطيفة */
+   .background-gradient {
+       background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+   }
+   
+   /* خلفية بنمط مربعات متقاطع */
+   .background-pattern {
+       background-color: #f4f6f9;
+       background-image: 
+         linear-gradient(to right, rgba(52, 152, 219, 0.05) 1px, transparent 1px),
+         linear-gradient(to bottom, rgba(52, 152, 219, 0.05) 1px, transparent 1px);
+       background-size: 30px 30px;
+   }
+   
+   /* خلفيات بألوان ناعمة */
+   .background-soft-blue {
+       background-color: #e6f2ff;
+   }
+   
+   .background-soft-green {
+       background-color: #e6f3e6;
+   }
+   
+   .background-soft-lavender {
+       background-color: #f0e6ff;
+   }
+   
+   /* متغيرات الألوان للثيم */
+   :root {
+       --primary-color: #3498db;
+       --text-color: #2c3e50;
+       --background-color: #f4f6f9;
+       --card-background: #ffffff;
+       --accent-color: #2ecc71;
+   }
+   
+   /* تهيئة عامة */
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+   
+   /* إعدادات الجسم */
+   body {
+       font-family: 'Inter', sans-serif;
+       background-color: var(--background-color);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       line-height: 1.6;
+       color: var(--text-color);
+       transition: background-color 0.5s ease;
+   }
+   
+   /* الحاوية الرئيسية للبطاقة */
+   .profile-wrapper {
+       position: relative;
+       width: 100%;
+       max-width: 500px;
+       perspective: 1000px; /* تأثير ثلاثي الأبعاد */
+   }
+   
+   /* إعدادات البطاقة */
+   .profile-card {
+       background-color: var(--card-background);
+       border-radius: 20px;
+       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+       padding: 40px;
+       text-align: center;
+       position: relative;
+       overflow: hidden;
+       transition: all 0.4s ease;
+       transform-style: preserve-3d;
+       transform: rotateX(10deg) rotateY(-10deg) translateZ(50px); /* تأثير التدوير */
+   }
+   
+   /* تأثير الحركة عند التمرير على البطاقة */
+   .profile-card:hover {
+       transform: rotateX(0) rotateY(0) translateZ(0);
+       box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+   }
+   
+   /* إعدادات صورة البروفايل */
+   .profile-picture {
+       width: 200px;
+       height: 200px;
+       border-radius: 50%;
+       object-fit: cover;
+       border: 5px solid var(--primary-color);
+       margin-bottom: 25px;
+       transition: transform 0.4s ease; /* تأثير تكبير عند التمرير */
+   }
+   
+   .profile-card:hover .profile-picture {
+       transform: scale(1.05);
+   }
+   
+   /* نصوص اسم المستخدم والعنوان والسيرة الذاتية */
+   .profile-name {
+       font-size: 32px;
+       font-weight: 600;
+       color: var(--primary-color);
+       margin-bottom: 10px;
+   }
+   
+   .profile-title {
+       font-size: 18px;
+       color: var(--text-color);
+       opacity: 0.7;
+       margin-bottom: 20px;
+   }
+   
+   .profile-bio {
+       font-size: 16px;
+       color: var(--text-color);
+       opacity: 0.8;
+       margin-bottom: 30px;
+   }
+   
+   /* روابط وسائل التواصل الاجتماعي */
+   .social-links {
+       display: flex;
+       justify-content: center;
+       gap: 25px;
+       margin-bottom: 30px;
+   }
+   
+   .social-links a {
+       color: var(--primary-color);
+       font-size: 24px;
+       transition: all 0.3s ease; /* تأثير عند تمرير الفأرة */
+   }
+   
+   .social-links a:hover {
+       color: var(--accent-color);
+       transform: scale(1.2) rotate(360deg); /* دوران عند التمرير */
+   }
+   
+   /* مهارات المستخدم */
+   .skills-section {
+       display: flex;
+       justify-content: center;
+       flex-wrap: wrap;
+       gap: 10px;
+   }
+   
+   .skill-tag {
+       background-color: rgba(52, 152, 219, 0.1);
+       color: var(--primary-color);
+       padding: 6px 12px;
+       border-radius: 20px;
+       font-size: 14px;
+       transition: all 0.3s ease; /* تأثير على الخلفية عند التمرير */
+   }
+   
+   .skill-tag:hover {
+       background-color: var(--primary-color);
+       color: white;
+   }
+   
+   /* تأثير حركة طفيفة */
+   @keyframes subtle-float {
+       0%, 100% { transform: translateY(0); }
+       50% { transform: translateY(-10px); }
+   }
+   
+   /* تأثير خلفية دائرية متحركة */
+   .profile-card::before {
+       content: '';
+       position: absolute;
+       top: -50%;
+       left: -50%;
+       width: 200%;
+       height: 200%;
+       background: radial-gradient(circle at center, 
+           rgba(52, 152, 219, 0.1) 0%, 
+           transparent 70%
+       );
+       animation: subtle-float 5s ease-in-out infinite;
+       z-index: -1; /* خلف البطاقة */
+   }
+   
+   /* أزرار اختيار الخلفية */
+   .background-selector {
+       position: fixed;
+       bottom: 20px;
+       left: 50%;
+       transform: translateX(-50%);
+       display: flex;
+       gap: 10px;
+       background-color: white;
+       padding: 10px;
+       border-radius: 20px;
+       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+   }
+   
+   .background-btn {
+       width: 30px;
+       height: 30px;
+       border-radius: 50%;
+       border: 2px solid transparent;
+       cursor: pointer;
+       transition: all 0.3s ease;
+   }
+   
+   .background-btn:hover {
+       transform: scale(1.1);
+   }
+   
+   .background-btn.active {
+       border-color: #3498db;
+   }
